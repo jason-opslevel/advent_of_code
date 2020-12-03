@@ -22,8 +22,9 @@ def traverse_tree_map_parametric(tree_map, x_slope, y_slope)
   y = 0
   trees = 0
   map_width = tree_map.first.length() - 1
+  map_length = tree_map.length() - 1
 
-  (0..tree_map.length() - 1).step(y_slope) do |i|
+  (0..map_length).step(y_slope) do |i|
     line = tree_map[i]
 
     if line[x % map_width] == '#'
