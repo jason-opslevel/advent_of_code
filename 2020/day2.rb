@@ -5,15 +5,11 @@ def check_policy(line)
   min, max = split_line[0].split('-').map(&:to_i)
   letter = split_line[1][0]
   pass = split_line[2]
-  #puts "#{min} #{max} #{letter} #{pass}"
 
-  letter_count = pass.split("").reduce(0) { |sum, l| 
-    return sum + 1 if l == letter
-    sum
-  }
-  puts letter_count
+  letter_count = pass.count(letter)
+  letter_count.between?(min, max)
 end
 
-File.foreach("day2_input.txt") { |line| check_policy(line) }
+File.foreach("day2_input.txt") { |line| count += 1 if check_policy(line) }
 
 puts "Part 1: #{count}"
